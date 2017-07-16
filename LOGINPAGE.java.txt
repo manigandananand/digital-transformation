@@ -1,0 +1,102 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>REGISTRATION</title>
+    </head>
+    <body bgcolor="lightpink">
+        <form action="register" method="post">
+        <h1><center> REGISTRATION FORM </center></h1>
+<center><table border ="0" cellspacing="5" cellpadding="3" width="70%"></center>
+<tr>
+<td><h3>Username</h3></td>
+<td><input type="text" name="username" id="username"  size="20"/></td>
+</tr>
+<tr>
+<td><h3>Password</h3></td>
+<td><input type="password" name="password" id="password" /></td>
+</tr>
+<tr>
+<td><h3>Confirm Password</h3></td>
+<td><input type="password" name="confirmpassword" id="confirmpassword"/></td>
+</tr>
+<tr>
+<td><h3>Age</h3></td>
+<td><input type="number" name="age" id="age" size="2"/></td>
+</tr>
+<tr>
+<td><h3>Phone number</h3></td>
+<td><input type="number" name="phonenumber" id="phonenumber" size="20"/></td>
+</tr>
+<tr>
+<td><h3>E-mail</h3></td>
+<td><input type="mail" name="email"  id="email" size="20"/></td>
+</tr>
+<tr> 
+<td><h3>Gender</h3></td>
+<td><input type="radio" name="gender" value="m">MALE</input>
+<td><input type="radio" name="gender" value="f">FEMALE</input></td>
+</tr> 
+<td><input type="submit" name="subtform" value="LOGIN"></td>
+<td><input type="reset" name="rstform" value="CANCEL"></td>
+</form>
+</table>
+</body>
+</html>
+ */
+            
+            try 
+            {
+                
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/invoice_tracking","root","abilash96");
+                Statement stmt = con.createStatement();
+                // To login
+              
+             int c=0;
+              ResultSet rs = stmt.executeQuery("select * from login;");
+              while(rs.next()){
+                if(rs.getString("username").equals(user))
+                {
+                    if(rs.getString("password").equals(pass))
+                    {
+                        response.sendRedirect("cud.html");
+                    }else
+                    {
+                 out.println("<html><head>");
+                 out.println("<script type=\"text/javascript\">");
+                 out.println("alert('Entered Password is wrong');");
+                 out.println("</script>");
+                 out.println("</head></html>");              
+                    }
+                }else
+                {
+                    c++;
+              }
+           }
+              if(c>0)
+              {
+                 out.println("<html><head>");
+                 out.println("<script type=\"text/javascript\">");
+                 out.println("alert('You are not a valid User');");
+                 out.println("</script>");
+                 out.println("</head></html>");
+
+              }
+              
+              
+             
+                            
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }
+
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }
+
+}

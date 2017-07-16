@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>update</title>
+    </head>
+    <body>
+       <CENTER> <h1>UPDATE THE CONTENTS</h1></CENTER>
+       <center><table border="0" cellspacing="5" cellpadding="5"></center>
+       <form>
+       <tr>
+                    <td><h3>UserName</h3></td>
+                    <td><input type="text" name="username" size="20" placeholder="Enter the Username"/></td><br><br>
+</tr>
+<tr>
+                    <td><h3>Description</h3></td>
+                    <td><textarea name="descpt" row="5" cols="20"></textarea></td><br><br>
+                </tr>
+                <td> <input type="submit" name="submitval" value="submit"></td>
+            <td>  <input type="reset" name="resetval" value="Reset"/><td>
+        </form>
+    </body>
+</html>
+n {
+        processRequest(request, response);
+    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+          String user = request.getParameter("username");
+          String descrpt = request.getParameter("description");
+          String query= "update invoice set description='"+descrpt+"' where username='"+user+"';";
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            try 
+            {
+                System.out.println(query);
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/invoice_tracking","root","abilash96");
+                Statement stmt = con.createStatement();
+                //To insert an entry into table
+                stmt.executeUpdate(query);
+                 out.println("<html><head>");
+                 out.println("<script type=\"text/javascript\">");
+                 out.println("alert('Updated Successfully');");
+                 out.println("</script>");
+                 out.println("</head></html>");
+               } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(update.class.getName()).log(Level.SEVERE, null, ex);
+                 out.println("<html><head>");
+                 out.println("<script type=\"text/javascript\">");
+                 out.println("alert('Not Update in the database');");
+                 out.println("</script>");
+                 out.println("</head></html>");
+
+            }
+            
+        }
+    }
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }
+
+}

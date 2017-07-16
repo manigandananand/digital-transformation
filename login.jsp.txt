@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>LOGIN</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+<script> 
+    function val()
+      {  
+      var user=document.getElementById("username").value;
+      var pass=document.getElementById("password").value;
+      if(user=="")
+                 
+      {
+      alert("enter a valid username!");
+      return false;
+      }
+      if(pass=="")
+      {
+      alert("enter a valid password!");
+      return false;
+  
+    }
+  }  
+  </script>
+    </head>
+    <body bgcolor="lightblue">
+        <div>
+             
+            <CENTER><h1>LOGIN FORM</h1></CENTER>
+<form method="post" action=" " onsubmit="return val()">
+<center><table border ="0" cellspacing="5" cellpadding="5" width="70%"></center>
+<tr>
+<td><h3>Username</h3></td>
+<td><input type="text" name="username" id="username"   size="20"/></td></tr> 
+<tr>
+<td><h3>Password</h3></td>
+<td><input type="password" name="password" id="password" />
+</td>
+</tr> 
+<td><input type="submit" name="subtform" value="SUBMIT" onclick="window.location.href='invoice.jsp'"></td>
+<td><input type="reset" name="rstform" value="RESET"></td>
+<input type="button" name="newreg" value="NEW REGISTER" onclick="window.location.href='registration.jsp'">
+</form>
+</table>
+
+        </div>
+    </body>
+</html>

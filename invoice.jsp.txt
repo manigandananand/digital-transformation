@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Invoice</title> <br> <br>
+    </head>
+    <body bgcolor="lightyellow">
+        <form action=" " method="post">
+    <center><h1>INVOICE</h1></center>
+            <center><table border="0" cellspacing="5" cellpadding="5"></center>
+                <tr>
+                    <td><h3>Object id</h3></td>
+                    <td><input type="number" value="objid" name="objid" placeholder="Enter the Object-id"/></td>
+                </tr>
+                <tr>
+                    <td><h3>Date</h3></td>
+                    <td><input type="date" name="date"  placeholder="DD/MM/YYYY"/></td>
+                </tr>
+                <tr>
+                    <td><h3>UserName</h3></td>
+                    <td><input type="text" name="usename" size="20" placeholder="Enter the Username"/></td>                
+                </tr>
+                <tr>
+                    <td><h3>Amount</h3></td>
+                    <td><input type="number" name="amount" placeholder="Enter the Amount"/> </td>
+                </tr>
+                <tr>
+                    <td><h3>Description</h3></td>
+                    <td><textarea name="descpt" row="5" cols="20"></textarea></td>
+                </tr>
+                <tr>
+                    <td> <input type="submit" name="submitval" value="SUBMIT"></td>
+                    <td> <input type="reset" name="resetval" value="RESET"/><td>
+                </tr>
+        </form>
+            </table>
+    </body>
+</html>
